@@ -1,125 +1,35 @@
-/* Estilos gerais */
 body {
-    font-family: 'Arial', sans-serif;
-    line-height: 1.6;
-    color: #333;
-    margin: center;
+    font-family: Arial, sans-serif;
+    margin: 0;
     padding: 0;
+    background-color: #e0f7e9;
+    color: #003366;
 }
 
-.container {
-    width: 90%;
-    max-width: 1200px;
-    margin: center;
-    padding: 20px 0;
-}
-
-/* Cabeçalho */
 header {
-    background-color: #10c966;
-    color: green;
-    text-align: center;
-    padding: 15px 0;
-    position: center;
-    top: 0;
-    z-index: 100;
-}
-
-.logo {
-    height: 60px;
-    float: center;
-    margin-right: 15px;
-}
-
-nav {
-    display: flex;
-    justify-content: center;
-    text-align: center
-    gap: 20px;
-    padding: 20px 0;
-}
-
-nav a {
-    color: white;
-    text-decoration: none;
-    font-weight: bold;
-}
-
-/* Hero Section */
-#hero {
-    background: linear-gradient(rgba(0,0,0,0.5), url('mesa-fundo.jpg');
-    background-size: cover;
-    background-position: center;
+    background-color: #006400;
     color: white;
     text-align: center;
-    padding: 100px 0;
+    padding: 30px 10px;
 }
 
-/* Seções */
-section {
-    padding: 50px 0;
+main {
+    padding: 20px;
 }
 
-h2 {
-    color: #e74c3c;
-    border-bottom: 2px solid #e74c3c;
-    padding-bottom: 10px;
-    margin-bottom: 20px;
+#atualizacoes {
+    background-color: #b3e5fc;
+    padding: 20px;
+    border-radius: 10px;
+    margin-top: 20px;
 }
 
-table {
-    width: 100%;
-    border-collapse: collapse;
-    margin: 20px 0;
-}
-
-table, th, td {
-    border: 1px solid #ddd;
-}
-
-th, td {
-    padding: 12px;
-    text-align: center;
-}
-
-th {
-    background-color: #f2f2f2;
-}
-
-/* Formulário */
-form {
-    max-width: 500px;
-    margin: 20px auto;
-}
-
-input, textarea {
-    width: 100%;
-    padding: 10px;
-    margin: 8px 0;
-    border: 1px solid #ddd;
-}
-
-button {
-    background-color: #e74c3c;
-    color: white;
-    border: none;
-    padding: 12px 20px;
-    cursor: pointer;
-}
-
-/* Rodapé */
 footer {
-    background-color: #2c3e50;
+    background-color: #004d99;
     color: white;
     text-align: center;
-    padding: 20px 0;
-}
-
-.social {
-    margin-top: 15px;
-}
-
-.social img {
-    width: 32px;
-    margin: 0 10px;
+    padding: 15px;
+    position: fixed;
+    bottom: 0;
+    width: 100%;
 }
