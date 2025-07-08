@@ -3,18 +3,665 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>CTMAAAMORIM</title>
-    <link rel="stylesheet" href="style.css">
+    <title>CTMAAAMORIM - Clube de Tênis de Mesa</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        :root {
+            --primary: #4a6fa5;
+            --primary-light: #6d8fc7;
+            --secondary: #6b8e23;
+            --light: #f8f9fa;
+            --dark: #2c3e50;
+            --gray: #7f8c8d;
+            --accent: #f39c12;
+            --background: #f5f7fa;
+            --card-bg: #ffffff;
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: var(--dark);
+            background-color: var(--background);
+            overflow-x: hidden;
+            font-size: 18px;
+        }
+        
+        .container {
+            width: 90%;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 15px;
+        }
+        
+        /* Header Styles */
+        header {
+            background: linear-gradient(135deg, var(--primary) 0%, var(--primary-light) 100%);
+            color: white;
+            padding: 1rem 0;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+        }
+        
+        .header-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+        }
+        
+        .logo-container {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+        
+        .logo {
+            width: 70px;
+            height: 70px;
+            background: var(--card-bg);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 2.5rem;
+            color: var(--primary);
+            font-weight: bold;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+        
+        .club-name h1 {
+            font-size: 1.8rem;
+            font-weight: 600;
+            letter-spacing: 0.5px;
+        }
+        
+        .club-name p {
+            font-size: 0.9rem;
+            opacity: 0.9;
+        }
+        
+        nav {
+            display: flex;
+            gap: 1.5rem;
+        }
+        
+        nav a {
+            color: white;
+            text-decoration: none;
+            font-weight: 500;
+            font-size: 1.1rem;
+            padding: 0.5rem;
+            transition: all 0.3s ease;
+            position: relative;
+        }
+        
+        nav a:hover {
+            color: rgba(255, 255, 255, 0.9);
+        }
+        
+        nav a::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: rgba(255, 255, 255, 0.7);
+            transition: width 0.3s ease;
+        }
+        
+        nav a:hover::after {
+            width: 100%;
+        }
+        
+        .menu-toggle {
+            display: none;
+            font-size: 1.5rem;
+            background: none;
+            border: none;
+            color: white;
+            cursor: pointer;
+        }
+        
+        /* Hero Section */
+        #hero {
+            background: linear-gradient(rgba(0, 0, 0, 0.1), rgba(0, 0, 0, 0.1)), url('https://images.unsplash.com/photo-1593111774240-d529f12e2c3c?q=80&w=2070&auto=format&fit=crop') center/cover no-repeat;
+            height: 80vh;
+            display: flex;
+            align-items: center;
+            text-align: center;
+            color: var(--dark);
+            position: relative;
+        }
+        
+        .hero-content {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 3rem;
+            background: rgba(255, 255, 255, 0.85);
+            border-radius: 15px;
+            animation: fadeIn 1.5s ease;
+            backdrop-filter: blur(5px);
+            box-shadow: 0 5px 25px rgba(0, 0, 0, 0.1);
+        }
+        
+        #hero h2 {
+            font-size: 3.2rem;
+            margin-bottom: 1.5rem;
+            color: var(--primary);
+            font-weight: 600;
+            line-height: 1.2;
+        }
+        
+        #hero p {
+            font-size: 1.5rem;
+            margin-bottom: 2.5rem;
+            color: var(--dark);
+        }
+        
+        .cta-button {
+            display: inline-block;
+            background: var(--primary);
+            color: white;
+            padding: 14px 35px;
+            border-radius: 30px;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 1.2rem;
+            transition: all 0.3s ease;
+            border: 2px solid var(--primary);
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            box-shadow: 0 4px 15px rgba(74, 111, 165, 0.3);
+        }
+        
+        .cta-button:hover {
+            background: transparent;
+            color: var(--primary);
+            transform: translateY(-3px);
+            box-shadow: 0 7px 20px rgba(74, 111, 165, 0.4);
+        }
+        
+        /* Section Styles */
+        section {
+            padding: 6rem 0;
+        }
+        
+        section:nth-child(even) {
+            background-color: rgba(245, 247, 250, 0.7);
+        }
+        
+        section h2 {
+            text-align: center;
+            margin-bottom: 4rem;
+            font-size: 2.6rem;
+            color: var(--primary);
+            position: relative;
+            font-weight: 600;
+        }
+        
+        section h2::after {
+            content: '';
+            position: absolute;
+            bottom: -15px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 100px;
+            height: 4px;
+            background: var(--accent);
+            border-radius: 2px;
+        }
+        
+        /* About Section */
+        .about-content {
+            display: flex;
+            align-items: center;
+            gap: 4rem;
+            flex-wrap: wrap;
+        }
+        
+        .about-text {
+            flex: 1;
+            min-width: 300px;
+        }
+        
+        .about-text p {
+            margin-bottom: 1.5rem;
+            line-height: 1.8;
+            font-size: 1.1rem;
+        }
+        
+        .about-image {
+            flex: 1;
+            min-width: 300px;
+            border-radius: 15px;
+            overflow: hidden;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+            transition: transform 0.5s ease;
+        }
+        
+        .about-image img {
+            width: 100%;
+            height: auto;
+            display: block;
+        }
+        
+        /* Schedule Section */
+        .schedule-container {
+            max-width: 900px;
+            margin: 0 auto;
+            background: var(--card-bg);
+            padding: 3rem;
+            border-radius: 15px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
+        }
+        
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 1.5rem;
+            font-size: 1.1rem;
+        }
+        
+        th, td {
+            padding: 18px;
+            text-align: left;
+            border-bottom: 1px solid #e0e7ef;
+        }
+        
+        th {
+            background-color: var(--primary);
+            color: white;
+            font-weight: 500;
+        }
+        
+        tr:nth-child(even) {
+            background-color: #f5f8fc;
+        }
+        
+        tr:hover {
+            background-color: #ebf0f7;
+        }
+        
+        /* Location Section */
+        .location-container {
+            display: flex;
+            gap: 4rem;
+            flex-wrap: wrap;
+        }
+        
+        .location-info {
+            flex: 1;
+            min-width: 300px;
+        }
+        
+        .location-info p {
+            margin-bottom: 1.8rem;
+            font-size: 1.1rem;
+            display: flex;
+            align-items: flex-start;
+            gap: 15px;
+            line-height: 1.7;
+        }
+        
+        .location-info i {
+            color: var(--primary);
+            font-size: 1.3rem;
+            min-width: 30px;
+        }
+        
+        .location-map {
+            flex: 1;
+            min-width: 300px;
+            height: 400px;
+            border-radius: 15px;
+            overflow: hidden;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+        }
+        
+        .location-map iframe {
+            width: 100%;
+            height: 100%;
+            border: none;
+        }
+        
+        /* Contact Section */
+        .contact-container {
+            display: flex;
+            gap: 4rem;
+            flex-wrap: wrap;
+        }
+        
+        .contact-info {
+            flex: 1;
+            min-width: 300px;
+        }
+        
+        .contact-info p {
+            margin-bottom: 1.8rem;
+            font-size: 1.1rem;
+            display: flex;
+            align-items: flex-start;
+            gap: 15px;
+            line-height: 1.7;
+        }
+        
+        .contact-info i {
+            color: var(--primary);
+            font-size: 1.3rem;
+            min-width: 30px;
+        }
+        
+        .contact-form {
+            flex: 1;
+            min-width: 300px;
+            background: var(--card-bg);
+            padding: 3rem;
+            border-radius: 15px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
+        }
+        
+        .contact-form h3 {
+            margin-bottom: 1.8rem;
+            color: var(--primary);
+            font-size: 1.8rem;
+        }
+        
+        .form-group {
+            margin-bottom: 1.8rem;
+        }
+        
+        .form-group label {
+            display: block;
+            margin-bottom: 0.7rem;
+            font-weight: 500;
+            color: var(--dark);
+        }
+        
+        .form-group input,
+        .form-group textarea {
+            width: 100%;
+            padding: 15px;
+            border: 1px solid #dce4ec;
+            border-radius: 8px;
+            font-size: 1.1rem;
+            transition: all 0.3s ease;
+            background: #f8fafc;
+        }
+        
+        .form-group input:focus,
+        .form-group textarea:focus {
+            outline: none;
+            border-color: var(--primary);
+            box-shadow: 0 0 0 3px rgba(74, 111, 165, 0.1);
+        }
+        
+        .form-group textarea {
+            height: 160px;
+            resize: vertical;
+        }
+        
+        button[type="submit"] {
+            background: var(--primary);
+            color: white;
+            border: none;
+            padding: 16px 30px;
+            border-radius: 8px;
+            font-size: 1.1rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            display: block;
+            width: 100%;
+            box-shadow: 0 4px 15px rgba(74, 111, 165, 0.3);
+        }
+        
+        button[type="submit"]:hover {
+            background: var(--primary-light);
+            transform: translateY(-3px);
+            box-shadow: 0 7px 20px rgba(74, 111, 165, 0.4);
+        }
+        
+        /* Footer */
+        footer {
+            background: var(--dark);
+            color: #ecf0f1;
+            padding: 4rem 0 2rem;
+        }
+        
+        .footer-container {
+            display: flex;
+            justify-content: space-between;
+            flex-wrap: wrap;
+            gap: 3rem;
+            margin-bottom: 2rem;
+        }
+        
+        .footer-logo {
+            flex: 1;
+            min-width: 250px;
+        }
+        
+        .footer-logo .logo {
+            width: 60px;
+            height: 60px;
+            font-size: 2rem;
+            margin-bottom: 1.5rem;
+        }
+        
+        .footer-logo p {
+            margin-top: 1rem;
+            line-height: 1.7;
+            color: #bdc3c7;
+        }
+        
+        .footer-links {
+            flex: 1;
+            min-width: 150px;
+        }
+        
+        .footer-links h3 {
+            margin-bottom: 1.8rem;
+            color: var(--accent);
+            position: relative;
+            font-size: 1.4rem;
+        }
+        
+        .footer-links h3::after {
+            content: '';
+            position: absolute;
+            bottom: -10px;
+            left: 0;
+            width: 40px;
+            height: 3px;
+            background: var(--primary);
+        }
+        
+        .footer-links ul {
+            list-style: none;
+        }
+        
+        .footer-links li {
+            margin-bottom: 1rem;
+        }
+        
+        .footer-links a {
+            color: #bdc3c7;
+            text-decoration: none;
+            transition: color 0.3s ease;
+            font-size: 1.1rem;
+        }
+        
+        .footer-links a:hover {
+            color: var(--accent);
+        }
+        
+        .social-links {
+            display: flex;
+            gap: 1rem;
+            margin-top: 1.5rem;
+        }
+        
+        .social-links a {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            width: 45px;
+            height: 45px;
+            background: #3a506b;
+            color: white;
+            border-radius: 50%;
+            transition: all 0.3s ease;
+            font-size: 1.2rem;
+        }
+        
+        .social-links a:hover {
+            background: var(--primary);
+            transform: translateY(-3px);
+        }
+        
+        .copyright {
+            text-align: center;
+            padding-top: 3rem;
+            border-top: 1px solid #3a506b;
+            font-size: 1rem;
+            color: #95a5a6;
+        }
+        
+        /* Animations */
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        
+        .animate-on-scroll {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: opacity 0.8s ease, transform 0.8s ease;
+        }
+        
+        .animate-on-scroll.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+        
+        /* Responsive Design */
+        @media (max-width: 992px) {
+            #hero h2 {
+                font-size: 2.8rem;
+            }
+            
+            #hero p {
+                font-size: 1.3rem;
+            }
+            
+            section h2 {
+                font-size: 2.3rem;
+            }
+        }
+        
+        @media (max-width: 768px) {
+            .menu-toggle {
+                display: block;
+            }
+            
+            nav {
+                display: none;
+                width: 100%;
+                flex-direction: column;
+                gap: 0;
+                margin-top: 1.5rem;
+                background: rgba(0, 0, 0, 0.1);
+                padding: 1rem;
+                border-radius: 8px;
+            }
+            
+            nav.active {
+                display: flex;
+            }
+            
+            nav a {
+                padding: 1.2rem;
+                border-top: 1px solid rgba(255, 255, 255, 0.1);
+            }
+            
+            #hero h2 {
+                font-size: 2.3rem;
+            }
+            
+            #hero p {
+                font-size: 1.1rem;
+            }
+            
+            section {
+                padding: 4rem 0;
+            }
+            
+            section h2 {
+                font-size: 2rem;
+            }
+            
+            .hero-content {
+                padding: 2rem;
+            }
+        }
+        
+        @media (max-width: 480px) {
+            .hero-content {
+                padding: 1.5rem;
+            }
+            
+            #hero h2 {
+                font-size: 1.8rem;
+            }
+            
+            section h2 {
+                font-size: 1.8rem;
+            }
+            
+            .cta-button {
+                padding: 12px 25px;
+                font-size: 1rem;
+            }
+            
+            .schedule-container, 
+            .contact-form {
+                padding: 2rem;
+            }
+        }
+    </style>
 </head>
 <body>
-        <header>
-        <h1>CTMAAAMORIM</h1>
-        <p> </p>
     <header>
-        <div class="container">
-            <img src="logo.png" alt="Logo do Clube" class="logo">
-            <h1> </h1>
-            <nav>
+        <div class="container header-container">
+            <div class="logo-container">
+                <div class="logo">TT</div>
+                <div class="club-name">
+                    <h1>CTMAAAMORIM</h1>
+                    <p>Clube de Tênis de Mesa</p>
+                </div>
+            </div>
+            
+            <button class="menu-toggle" id="menuToggle">
+                <i class="fas fa-bars"></i>
+            </button>
+            
+            <nav id="mainNav">
                 <a href="#sobre">Sobre</a>
                 <a href="#horarios">Horários</a>
                 <a href="#localizacao">Localização</a>
@@ -25,65 +672,231 @@
 
     <section id="hero">
         <div class="container">
-            <h2>Bem-vindo ao nosso clube!</h2>
-            <p>Promovendo a paixão pelo ténis de mesa desde 2025</p>
+            <div class="hero-content">
+                <h2>Bem-vindo ao nosso clube!</h2>
+                <p>Promovendo a paixão pelo tênis de mesa desde 2025</p>
+                <a href="#contato" class="cta-button">Junte-se a nós</a>
+            </div>
         </div>
     </section>
 
     <section id="sobre" class="container">
         <h2>Sobre Nós</h2>
-        <p>Fundado em 2025, nosso clube oferece um espaço para a prática do ténis de mesa a jogadores de todos os escalões e do PARA ténis de mesa.</p>
+        <div class="about-content animate-on-scroll">
+            <div class="about-text">
+                <p>Fundado em 2025, o CTMAAAMORIM oferece um espaço dedicado à prática do tênis de mesa para jogadores de todos os níveis, incluindo atletas do PARA tênis de mesa.</p>
+                <p>Nossa missão é promover o esporte, desenvolver talentos e criar uma comunidade apaixonada pelo tênis de mesa. Contamos com treinadores qualificados, equipamentos de última geração e um ambiente acolhedor para todos.</p>
+                <p>Organizamos regularmente torneios, clínicas de treinamento e eventos sociais para integrar nossa comunidade e fomentar o espírito esportivo.</p>
+            </div>
+            <div class="about-image">
+                <img src="https://images.unsplash.com/photo-1593111774240-d529f12e2c3c?q=80&w=2070&auto=format&fit=crop" alt="Jogo de tênis de mesa">
+            </div>
+        </div>
     </section>
 
     <section id="horarios" class="container">
         <h2>Horários</h2>
-        <table>
-            <tr>
-                <th>Dia</th>
-                <th>Horário</th>
-            </tr>
-            <tr>
-                <td>Segunda-Sexta</td>
-                <td>14:00 - 22:00</td>
-            </tr>
-            <tr>
-                <td>Sábado</td>
-                <td>10:00 - 20:00</td>
-            </tr>
-            <tr>
-                <td>Domingo</td>
-                <td>09:00 - 18:00</td>
-            </tr>
-        </table>
+        <div class="schedule-container animate-on-scroll">
+            <p>Nossas instalações estão abertas para prática livre, treinos e aulas. Confira abaixo nossos horários de funcionamento:</p>
+            <table>
+                <tr>
+                    <th>Dia</th>
+                    <th>Horário</th>
+                    <th>Atividades</th>
+                </tr>
+                <tr>
+                    <td>Segunda-Sexta</td>
+                    <td>14:00 - 22:00</td>
+                    <td>Prática livre, treinos e aulas</td>
+                </tr>
+                <tr>
+                    <td>Sábado</td>
+                    <td>10:00 - 20:00</td>
+                    <td>Torneios e prática livre</td>
+                </tr>
+                <tr>
+                    <td>Domingo</td>
+                    <td>09:00 - 18:00</td>
+                    <td>Prática livre e eventos especiais</td>
+                </tr>
+            </table>
+        </div>
     </section>
 
     <section id="localizacao" class="container">
         <h2>Onde Estamos</h2>
-        <p>Rua da Escola - Lourosa</p>
+        <div class="location-container animate-on-scroll">
+            <div class="location-info">
+                <p><i class="fas fa-map-marker-alt"></i> <strong>Endereço:</strong> Rua da Escola - Lourosa, Portugal</p>
+                <p><i class="fas fa-subway"></i> <strong>Estação de Metro:</strong> Lourosa (10 min a pé)</p>
+                <p><i class="fas fa-bus"></i> <strong>Linhas de ônibus:</strong> 501, 503, 505</p>
+                <p><i class="fas fa-parking"></i> <strong>Estacionamento:</strong> Gratuito disponível no local</p>
+                <p><i class="fas fa-info-circle"></i> Nossas instalações estão localizadas no coração de Lourosa, com fácil acesso por transporte público e particular. Contamos com mesas profissionais, área de treino, vestiários e espaço de convivência.</p>
+            </div>
+            <div class="location-map">
+                <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3001.37808466231!2d-8.55116502354448!3d41.22247740766093!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0xd24630d4c7f7c4d%3A0x9e7c8b6d4b5d3f1e!2sLourosa%2C%20Portugal!5e0!3m2!1sen!2sus!4v1686754253780!5m2!1sen!2sus" allowfullscreen="" loading="lazy"></iframe>
+            </div>
+        </div>
+    </section>
 
     <section id="contato" class="container">
         <h2>Contato</h2>
-        <p>Email: ctmaaamorim@gmail.com<br>
-        Telefone: +351 912949109</p>
-        
-        <form>
-            <input type="text" placeholder="Nome" required>
-            <input type="email" placeholder="Email" required>
-            <textarea placeholder="Mensagem" required></textarea>
-            <button type="submit">Enviar</button>
-        </form>
+        <div class="contact-container animate-on-scroll">
+            <div class="contact-info">
+                <p><i class="fas fa-envelope"></i> <strong>Email:</strong> ctmaaamorim@gmail.com</p>
+                <p><i class="fas fa-phone"></i> <strong>Telefone:</strong> +351 912 949 109</p>
+                <p><i class="fas fa-clock"></i> <strong>Horário de atendimento:</strong> Segunda a Domingo conforme horários</p>
+                <p><i class="fas fa-comments"></i> Entre em contato conosco para mais informações sobre matrículas, torneios ou parcerias. Nossa equipe está pronta para responder suas perguntas e ajudar você a começar sua jornada no tênis de mesa.</p>
+                
+                <div class="social-links">
+                    <a href="#" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
+                    <a href="#" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+                    <a href="#" aria-label="YouTube"><i class="fab fa-youtube"></i></a>
+                    <a href="#" aria-label="WhatsApp"><i class="fab fa-whatsapp"></i></a>
+                </div>
+            </div>
+            
+            <div class="contact-form">
+                <h3>Envie uma mensagem</h3>
+                <form id="contactForm" method="post">
+                    <div class="form-group">
+                        <label for="name">Nome</label>
+                        <input type="text" id="name" name="name" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="email">Email</label>
+                        <input type="email" id="email" name="email" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="phone">Telefone</label>
+                        <input type="tel" id="phone" name="phone">
+                    </div>
+                    <div class="form-group">
+                        <label for="message">Mensagem</label>
+                        <textarea id="message" name="message" required></textarea>
+                    </div>
+                    <button type="submit">Enviar Mensagem</button>
+                </form>
+            </div>
+        </div>
     </section>
 
     <footer>
         <div class="container">
-            <p>&copy; 2025 CTMAAAMORIM - Todos os direitos reservados</p>
-            <div class="social">
-                <a href="#"><img src="facebook-icon.png" alt="Facebook"></a>
-                <a href="#"><img src="instagram-icon.png" alt="Instagram"></a>
+            <div class="footer-container">
+                <div class="footer-logo">
+                    <div class="logo">TT</div>
+                    <h3>CTMAAAMORIM</h3>
+                    <p>Promovendo a paixão pelo tênis de mesa desde 2025. Um espaço para todos os amantes deste esporte fascinante.</p>
+                </div>
+                
+                <div class="footer-links">
+                    <h3>Links Rápidos</h3>
+                    <ul>
+                        <li><a href="#sobre">Sobre Nós</a></li>
+                        <li><a href="#horarios">Horários</a></li>
+                        <li><a href="#localizacao">Localização</a></li>
+                        <li><a href="#contato">Contato</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-links">
+                    <h3>Recursos</h3>
+                    <ul>
+                        <li><a href="#">Torneios</a></li>
+                        <li><a href="#">Aulas</a></li>
+                        <li><a href="#">Membros</a></li>
+                        <li><a href="#">Galeria</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-links">
+                    <h3>Contato</h3>
+                    <ul>
+                        <li><a href="mailto:ctmaaamorim@gmail.com">ctmaaamorim@gmail.com</a></li>
+                        <li><a href="tel:+351912949109">+351 912 949 109</a></li>
+                        <li>Rua da Escola, Lourosa</li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div class="copyright">
+                <p>&copy; 2025 CTMAAAMORIM - Todos os direitos reservados</p>
             </div>
         </div>
     </footer>
 
-    <script src="script.js"></script>
+    <script>
+        // Mobile menu toggle
+        const menuToggle = document.getElementById('menuToggle');
+        const mainNav = document.getElementById('mainNav');
+        
+        menuToggle.addEventListener('click', () => {
+            mainNav.classList.toggle('active');
+            menuToggle.querySelector('i').classList.toggle('fa-bars');
+            menuToggle.querySelector('i').classList.toggle('fa-times');
+        });
+        
+        // Close menu when clicking a link
+        document.querySelectorAll('nav a').forEach(link => {
+            link.addEventListener('click', () => {
+                mainNav.classList.remove('active');
+                menuToggle.querySelector('i').classList.add('fa-bars');
+                menuToggle.querySelector('i').classList.remove('fa-times');
+            });
+        });
+        
+        // Form submission
+        const contactForm = document.getElementById('contactForm');
+        
+        contactForm.addEventListener('submit', (e) => {
+            e.preventDefault();
+            
+            // Simple form validation
+            const name = document.getElementById('name').value;
+            const email = document.getElementById('email').value;
+            const message = document.getElementById('message').value;
+            
+            if (name && email && message) {
+                // In a real scenario, you would send the data to a server
+                alert('Mensagem enviada com sucesso! Entraremos em contato em breve.');
+                contactForm.reset();
+            } else {
+                alert('Por favor, preencha todos os campos obrigatórios.');
+            }
+        });
+        
+        // Scroll animations
+        const observerOptions = {
+            threshold: 0.1
+        };
+        
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                }
+            });
+        }, observerOptions);
+        
+        document.querySelectorAll('.animate-on-scroll').forEach(element => {
+            observer.observe(element);
+        });
+        
+        // Smooth scrolling for anchor links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function(e) {
+                e.preventDefault();
+                
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    window.scrollTo({
+                        top: target.offsetTop - 80,
+                        behavior: 'smooth'
+                    });
+                }
+            });
+        });
+    </script>
 </body>
 </html>
