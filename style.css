@@ -3,14 +3,14 @@ body {
     font-family: 'Arial', sans-serif;
     line-height: 1.6;
     color: #333;
-    margin: 0;
+    margin: center;
     padding: 0;
 }
 
 .container {
     width: 90%;
     max-width: 1200px;
-    margin: 0 auto;
+    margin: center;
     padding: 20px 0;
 }
 
