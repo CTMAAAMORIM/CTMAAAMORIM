@@ -27,7 +27,7 @@ header {
 
 .logo {
     height: 60px;
-    float: left;
+    float: center;
     margin-right: 15px;
 }
 
@@ -78,7 +78,7 @@ table, th, td {
 
 th, td {
     padding: 12px;
-    text-align: left;
+    text-align: center;
 }
 
 th {
