@@ -64,18 +64,12 @@
             gap: 15px;
         }
         
-        .logo {
-            width: 70px;
-            height: 70px;
-            background: var(--card-bg);
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 2.5rem;
-            color: var(--primary);
-            font-weight: bold;
-            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        /* Estilos para o seu logo real */
+        .club-logo {
+            width: 70px; /* Ajuste conforme necessário */
+            height: 70px; /* Ajuste conforme necessário */
+            border-radius: 8px; /* Opcional: remove para logo retangular */
+            object-fit: contain; /* Mantém a proporção do logo */
         }
         
         .club-name h1 {
@@ -130,6 +124,25 @@
             border: none;
             color: white;
             cursor: pointer;
+        }
+        
+        /* Social Header */
+        .social-header {
+            display: flex;
+            gap: 1rem;
+            align-items: center;
+            margin-right: 1rem;
+        }
+        
+        .social-header a {
+            color: white;
+            font-size: 1.3rem;
+            transition: all 0.3s ease;
+        }
+        
+        .social-header a:hover {
+            transform: translateY(-3px);
+            color: var(--accent);
         }
         
         /* Hero Section */
@@ -451,10 +464,9 @@
             min-width: 250px;
         }
         
-        .footer-logo .logo {
+        .footer-logo .club-logo {
             width: 60px;
             height: 60px;
-            font-size: 2rem;
             margin-bottom: 1.5rem;
         }
         
@@ -573,6 +585,11 @@
             section h2 {
                 font-size: 2.3rem;
             }
+            
+            .social-header {
+                display: none;
+            /* Os ícones sociais aparecerão no rodapé em dispositivos móveis */
+            }
         }
         
         @media (max-width: 768px) {
@@ -643,6 +660,11 @@
             .contact-form {
                 padding: 2rem;
             }
+            
+            .club-logo {
+                width: 60px;
+                height: 60px;
+            }
         }
     </style>
 </head>
@@ -650,11 +672,23 @@
     <header>
         <div class="container header-container">
             <div class="logo-container">
-                <div class="logo">TT</div>
+                <!-- SEU LOGOTIPO AQUI -->
+                <!-- Substitua "logo.png" pelo caminho do seu arquivo de logo -->
+                <img src="logo.png" alt="Logo CTMAAAMORIM" class="club-logo">
                 <div class="club-name">
                     <h1>CTMAAAMORIM</h1>
                     <p>Clube de Tênis de Mesa</p>
                 </div>
+            </div>
+            
+            <div class="social-header">
+                <!-- Links para redes sociais - Substitua pelas suas URLs -->
+                <a href="https://www.facebook.com/seuperfil" target="_blank" aria-label="Facebook">
+                    <i class="fab fa-facebook-f"></i>
+                </a>
+                <a href="https://www.instagram.com/seuperfil" target="_blank" aria-label="Instagram">
+                    <i class="fab fa-instagram"></i>
+                </a>
             </div>
             
             <button class="menu-toggle" id="menuToggle">
@@ -727,11 +761,11 @@
         <h2>Onde Estamos</h2>
         <div class="location-container animate-on-scroll">
             <div class="location-info">
-                <p><i class="fas fa-map-marker-alt"></i> <strong>Endereço:</strong> Rua da Escola - Lourosa, Portugal</p>
-                <p><i class="fas fa-subway"></i> <strong>Estação de Metro:</strong> Lourosa (10 min a pé)</p>
-                <p><i class="fas fa-bus"></i> <strong>Linhas de ônibus:</strong> 501, 503, 505</p>
-                <p><i class="fas fa-parking"></i> <strong>Estacionamento:</strong> Gratuito disponível no local</p>
-                <p><i class="fas fa-info-circle"></i> Nossas instalações estão localizadas no coração de Lourosa, com fácil acesso por transporte público e particular. Contamos com mesas profissionais, área de treino, vestiários e espaço de convivência.</p>
+                <p><i class="fas fa-map-marker-alt"></i> Rua da Escola - Lourosa, Portugal</p>
+                <p><i class="fas fa-subway"></i> Estação de Metro mais próxima: Lourosa (10 min a pé)</p>
+                <p><i class="fas fa-bus"></i> Linhas de ônibus: 501, 503, 505</p>
+                <p><i class="fas fa-parking"></i> Estacionamento gratuito disponível no local</p>
+                <p>Nossas instalações estão localizadas no coração de Lourosa, com fácil acesso por transporte público e particular. Contamos com mesas profissionais, área de treino, vestiários e espaço de convivência.</p>
             </div>
             <div class="location-map">
                 <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3001.37808466231!2d-8.55116502354448!3d41.22247740766093!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0xd24630d4c7f7c4d%3A0x9e7c8b6d4b5d3f1e!2sLourosa%2C%20Portugal!5e0!3m2!1sen!2sus!4v1686754253780!5m2!1sen!2sus" allowfullscreen="" loading="lazy"></iframe>
@@ -743,16 +777,18 @@
         <h2>Contato</h2>
         <div class="contact-container animate-on-scroll">
             <div class="contact-info">
-                <p><i class="fas fa-envelope"></i> <strong>Email:</strong> ctmaaamorim@gmail.com</p>
-                <p><i class="fas fa-phone"></i> <strong>Telefone:</strong> +351 912 949 109</p>
-                <p><i class="fas fa-clock"></i> <strong>Horário de atendimento:</strong> Segunda a Domingo conforme horários</p>
-                <p><i class="fas fa-comments"></i> Entre em contato conosco para mais informações sobre matrículas, torneios ou parcerias. Nossa equipe está pronta para responder suas perguntas e ajudar você a começar sua jornada no tênis de mesa.</p>
+                <p><i class="fas fa-envelope"></i> ctmaaamorim@gmail.com</p>
+                <p><i class="fas fa-phone"></i> +351 912 949 109</p>
+                <p><i class="fas fa-clock"></i> Segunda a Domingo conforme horários</p>
+                <p>Entre em contato conosco para mais informações sobre matrículas, torneios ou parcerias. Nossa equipe está pronta para responder suas perguntas e ajudar você a começar sua jornada no tênis de mesa.</p>
                 
                 <div class="social-links">
-                    <a href="#" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
-                    <a href="#" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
-                    <a href="#" aria-label="YouTube"><i class="fab fa-youtube"></i></a>
-                    <a href="#" aria-label="WhatsApp"><i class="fab fa-whatsapp"></i></a>
+                    <a href="https://www.facebook.com/seuperfil" target="_blank" aria-label="Facebook">
+                        <i class="fab fa-facebook-f"></i>
+                    </a>
+                    <a href="https://www.instagram.com/seuperfil" target="_blank" aria-label="Instagram">
+                        <i class="fab fa-instagram"></i>
+                    </a>
                 </div>
             </div>
             
@@ -785,9 +821,10 @@
         <div class="container">
             <div class="footer-container">
                 <div class="footer-logo">
-                    <div class="logo">TT</div>
+                    <!-- Logo no rodapé -->
+                    <img src="logo.png" alt="Logo CTMAAAMORIM" class="club-logo">
                     <h3>CTMAAAMORIM</h3>
-                    <p>Promovendo a paixão pelo tênis de mesa desde 2025. Um espaço para todos os amantes deste esporte fascinante.</p>
+                    <p>Promovendo a paixão pelo tênis de mesa desde 2025</p>
                 </div>
                 
                 <div class="footer-links">
@@ -817,6 +854,14 @@
                         <li><a href="tel:+351912949109">+351 912 949 109</a></li>
                         <li>Rua da Escola, Lourosa</li>
                     </ul>
+                    <div class="social-links">
+                        <a href="https://www.facebook.com/seuperfil" target="_blank" aria-label="Facebook">
+                            <i class="fab fa-facebook-f"></i>
+                        </a>
+                        <a href="https://www.instagram.com/seuperfil" target="_blank" aria-label="Instagram">
+                            <i class="fab fa-instagram"></i>
+                        </a>
+                    </div>
                 </div>
             </div>
             
